@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Products - Elite Commerce</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+            color: white;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(220, 38, 38, 0.95);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            color: white;
+            text-decoration: none;
+            animation: glow 2s ease-in-out infinite alternate;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo i {
+            font-size: 2.2rem;
+            color: white;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
+            to { text-shadow: 0 0 25px rgba(255, 255, 255, 0.9); }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .cart-icon {
+            position: relative;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cart-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: white;
+            color: #dc2626;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 100px;
+            padding: 4rem 2rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, white, #fecaca, white);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .page-subtitle {
+            text-align: center;
+            font-size: 1.3rem;
+            margin-bottom: 4rem;
+            color: rgba(255, 255, 255, 0.9);
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Filter Section */
+        .filter-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .filter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            align-items: end;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .filter-group label {
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .filter-group select,
+        .filter-group input {
+            padding: 0.8rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .filter-group select:focus,
+        .filter-group input:focus {
+            outline: none;
+            border-color: white;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .filter-btn {
+            padding: 0.8rem 1.5rem;
+            background: white;
+            color: #dc2626;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover {
+            background: #dc2626;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 0;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+            overflow: hidden;
+            position: relative;
+            animation: fadeInUp 0.8s ease-out both;
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(220, 38, 38, 0.3), rgba(185, 28, 28, 0.2));
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover .product-image::before {
+            background: linear-gradient(45deg, rgba(220, 38, 38, 0.1), rgba(185, 28, 28, 0.05));
+        }
+
+        .product-content {
+            padding: 2rem;
+        }
+
+        .product-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: white;
+            font-weight: 600;
+        }
+
+        .product-description {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .product-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-price .original-price {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: line-through;
+            margin-right: 0.5rem;
+        }
+
+        .contact-button {
+            background: white;
+            color: #dc2626;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            width: 100%;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        .contact-button:hover {
+            background: #dc2626;
+            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: white;
+            color: #dc2626;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.6) 100%);
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+            color: white;
+            backdrop-filter: blur(10px);
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 100px;
+            left: 0;
+            right: 0;
+            background: rgba(220, 38, 38, 0.98);
+            backdrop-filter: blur(15px);
+            padding: 2rem;
+            z-index: 999;
+        }
+
+        .mobile-menu.active {
+            display: block;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        .mobile-menu a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu a:hover {
+            color: #fecaca;
+            padding-left: 1rem;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .container {
+                max-width: 95%;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .main-content {
+                padding: 2rem 1rem;
+            }
+
+            .page-title {
+                font-size: 2.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .page-subtitle {
+                font-size: 1.1rem;
+                margin-bottom: 3rem;
+            }
+
+            .filter-section {
+                padding: 1.5rem;
+                margin-bottom: 2rem;
+            }
+
+            .filter-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .product-card {
+                margin: 0 auto;
+                max-width: 400px;
+            }
+
+            .product-image {
+                height: 200px;
+            }
+
+            .product-content {
+                padding: 1.5rem;
+            }
+
+            .product-title {
+                font-size: 1.3rem;
+            }
+
+            .product-price {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 1rem;
+            }
+
+            .main-content {
+                margin-top: 80px;
+                padding: 1.5rem 1rem;
+            }
+
+            .page-title {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+
+            .page-subtitle {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            .filter-section {
+                padding: 1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .filter-grid {
+                gap: 0.8rem;
+            }
+
+            .filter-group label {
+                font-size: 0.9rem;
+            }
+
+            .filter-group select,
+            .filter-group input {
+                padding: 0.6rem;
+                font-size: 0.9rem;
+            }
+
+            .filter-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .products-grid {
+                gap: 1.5rem;
+            }
+
+            .product-card {
+                max-width: 100%;
+            }
+
+            .product-image {
+                height: 180px;
+            }
+
+            .product-content {
+                padding: 1rem;
+            }
+
+            .product-title {
+                font-size: 1.2rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .product-description {
+                font-size: 0.9rem;
+                margin-bottom: 1rem;
+            }
+
+            .product-price {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .contact-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 320px) {
+            .page-title {
+                font-size: 1.8rem;
+            }
+
+            .product-image {
+                height: 150px;
+            }
+
+            .product-title {
+                font-size: 1.1rem;
+            }
+
+            .product-price {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="index.html" class="logo">
+                <i class="fas fa-crown"></i>
+                Elite Commerce
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html" class="active">Products</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+
+            </ul>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Home</a>
+        <a href="products.html" class="active">Products</a>
+        <a href="services.html">Services</a>
+        <a href="index.html#features">Features</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <h1 class="page-title">Premium Collection</h1>
+            <p class="page-subtitle">Discover our curated selection of luxury items</p>
+
+            <!-- Filter Section -->
+            <div class="filter-section">
+                <div class="filter-grid">
+                    <div class="filter-group">
+                        <label for="category">Category</label>
+                        <select id="category">
+                            <option value="">All Categories</option>
+                            <option value="accessories">Accessories</option>
+                            <option value="jewelry">Jewelry</option>
+                            <option value="watches">Watches</option>
+                            <option value="tech">Technology</option>
+                            <option value="fashion">Fashion</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="price-range">Price Range</label>
+                        <select id="price-range">
+                            <option value="">All Prices</option>
+                            <option value="0-1000">$0 - $1,000</option>
+                            <option value="1000-3000">$1,000 - $3,000</option>
+                            <option value="3000-5000">$3,000 - $5,000</option>
+                            <option value="5000+">$5,000+</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="sort">Sort By</label>
+                        <select id="sort">
+                            <option value="featured">Featured</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="newest">Newest First</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <button class="filter-btn" onclick="applyFilters()">
+                            <i class="fas fa-filter"></i> Apply Filters
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="products-grid" id="products-grid">
+                <div class="product-card" data-category="accessories" data-price="2999">
+                    <div class="product-badge">BESTSELLER</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80')"></div>
+                    <div class="product-content">
+                        <h3 class="product-title">Executive Business Suite</h3>
+                        <p class="product-description">Premium leather briefcase with gold-plated hardware and custom interior organization system.</p>
+                        <p class="product-price">
+                            <span class="original-price">$3,999</span>
+                            $2,999
+                        </p>
+                        <a href="contact.html" class="contact-button">
+                            <i class="fas fa-envelope"></i>
+                            Contact for Purchase
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="watches" data-price="1599">
+                    <div class="product-badge">LIMITED</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1099&q=80')"></div>
+                    <div class="product-content">
+                        <h3 class="product-title">Swiss Luxury Timepiece</h3>
+                        <p class="product-description">Handcrafted Swiss movement with sapphire crystal and titanium case. Limited edition of 500 pieces.</p>
+                        <p class="product-price">
+                            <span class="original-price">$2,199</span>
+                            $1,599
+                        </p>
+                        <a href="contact.html" class="contact-button">
+                            <i class="fas fa-envelope"></i>
+                            Contact for Purchase
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="jewelry" data-price="4999">
+                    <div class="product-badge">EXCLUSIVE</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80')"></div>
+                    <div class="product-content">
+                        <h3 class="product-title">Diamond Collection Set</h3>
+                        <p class="product-description">Exquisite diamond jewelry set featuring rare stones with certified authenticity and lifetime warranty.</p>
+                        <p class="product-price">
+                            <span class="original-price">$6,999</span>
+                            $4,999
+                        </p>
+                        <a href="contact.html" class="contact-button">
+                            <i class="fas fa-envelope"></i>
+                            Contact for Purchase
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="tech" data-price="3299">
+                    <div class="product-badge">NEW</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                    <div class="product-content">
+                        <h3 class="product-title">Premium Tech Bundle</h3>
+                        <p class="product-description">Latest technology suite including laptop, tablet, and accessories for the modern executive.</p>
+                        <p class="product-price">
+                            <span class="original-price">$4,499</span>
+                            $3,299
+                        </p>
+                        <a href="contact.html" class="contact-button">
+                            <i class="fas fa-envelope"></i>
+                            Contact for Purchase
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="fashion" data-price="1299">
+                    <div class="product-badge">PREMIUM</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1112&q=80')"></div>
+                    <div class="product-content">
+                        <h3 class="product-title">Designer Footwear</h3>
+                        <p class="product-description">Handcrafted Italian leather shoes with custom fitting and premium materials for ultimate comfort.</p>
+                        <p class="product-price">
+                            <span class="original-price">$1,899</span>
+                            $1,299
+                        </p>
+                        <a href="contact.html" class="contact-button">
+                            <i class="fas fa-envelope"></i>
+                            Contact for Purchase
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="accessories" data-price="649">
+                    <div class="product-badge">LUXURY</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1180&q=80')"></div>
+                    <div class="product-content">
+                        <h3 class="product-title">Luxury Sunglasses</h3>
+                        <p class="product-description">Designer sunglasses with polarized lenses and titanium frame. UV protection with style guarantee.</p>
+                        <p class="product-price">
+                            <span class="original-price">$899</span>
+                            $649
+                        </p>
+                        <a href="contact.html" class="contact-button">
+                            <i class="fas fa-envelope"></i>
+                            Contact for Purchase
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="watches" data-price="2499">
+                    <div class="product-badge">SIGNATURE</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1594534475808-b18fc33b045e?ixlib=rb-4.0.3&w=1000&q=80')"></div>
+                    <div class="product-content">
+                        <h3 class="product-title">Platinum Chronograph</h3>
+                        <p class="product-description">Precision-engineered platinum watch with multiple complications and water resistance to 300m.</p>
+                        <p class="product-price">
+                            <span class="original-price">$3,299</span>
+                            $2,499
+                        </p>
+                        <a href="contact.html" class="contact-button">
+                            <i class="fas fa-envelope"></i>
+                            Contact for Purchase
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="jewelry" data-price="1899">
+                    <div class="product-badge">ARTISAN</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-4.0.3&w=1000&q=80')"></div>
+                    <div class="product-content">
+                        <h3 class="product-title">Emerald Pendant Necklace</h3>
+                        <p class="product-description">Handcrafted emerald pendant with 18k gold chain. Each stone is individually selected for perfection.</p>
+                        <p class="product-price">
+                            <span class="original-price">$2,499</span>
+                            $1,899
+                        </p>
+                        <a href="contact.html" class="contact-button">
+                            <i class="fas fa-envelope"></i>
+                            Contact for Purchase
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="tech" data-price="5999">
+                    <div class="product-badge">FLAGSHIP</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1468495244123-6c6c332eeece?ixlib=rb-4.0.3&w=1000&q=80')"></div>
+                    <div class="product-content">
+                        <h3 class="product-title">Executive Workstation</h3>
+                        <p class="product-description">Complete luxury workstation with premium materials, ergonomic design, and integrated technology.</p>
+                        <p class="product-price">
+                            <span class="original-price">$7,999</span>
+                            $5,999
+                        </p>
+                        <a href="contact.html" class="contact-button">
+                            <i class="fas fa-envelope"></i>
+                            Contact for Purchase
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+            </div>
+            <p>&copy; 2024 Elite Commerce. Professional excellence in every transaction.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuToggle = document.querySelector('.mobile-menu-toggle i');
+
+            mobileMenu.classList.toggle('active');
+
+            if (mobileMenu.classList.contains('active')) {
+                menuToggle.classList.remove('fa-bars');
+                menuToggle.classList.add('fa-times');
+            } else {
+                menuToggle.classList.remove('fa-times');
+                menuToggle.classList.add('fa-bars');
+            }
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+
+            if (!mobileMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+                mobileMenu.classList.remove('active');
+                const menuIcon = document.querySelector('.mobile-menu-toggle i');
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            }
+        });
+
+        // Enhanced animations and interactions
+
+        // Filter functionality
+        function applyFilters() {
+            const category = document.getElementById('category').value;
+            const priceRange = document.getElementById('price-range').value;
+            const sort = document.getElementById('sort').value;
+            const products = document.querySelectorAll('.product-card');
+
+            // Filter products
+            products.forEach(product => {
+                let show = true;
+
+                // Category filter
+                if (category && product.dataset.category !== category) {
+                    show = false;
+                }
+
+                // Price filter
+                if (priceRange) {
+                    const price = parseInt(product.dataset.price);
+                    const [min, max] = priceRange.split('-').map(p => p.replace('+', ''));
+
+                    if (max) {
+                        if (price < parseInt(min) || price > parseInt(max)) {
+                            show = false;
+                        }
+                    } else {
+                        if (price < parseInt(min)) {
+                            show = false;
+                        }
+                    }
+                }
+
+                product.style.display = show ? 'block' : 'none';
+            });
+
+            // Sort products
+            const grid = document.getElementById('products-grid');
+            const visibleProducts = Array.from(products).filter(p => p.style.display !== 'none');
+
+            if (sort === 'price-low') {
+                visibleProducts.sort((a, b) => parseInt(a.dataset.price) - parseInt(b.dataset.price));
+            } else if (sort === 'price-high') {
+                visibleProducts.sort((a, b) => parseInt(b.dataset.price) - parseInt(a.dataset.price));
+            }
+
+            // Re-append sorted products
+            visibleProducts.forEach(product => grid.appendChild(product));
+        }
+
+        // Enhanced contact button animations
+        document.querySelectorAll('.contact-button').forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05) translateY(-2px)';
+                this.style.boxShadow = '0 15px 35px rgba(0, 0, 0, 0.4)';
+            });
+
+            button.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1) translateY(0)';
+                this.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.3)';
+            });
+        });
+
+        // Add staggered animations to product cards
+        document.querySelectorAll('.product-card').forEach((card, index) => {
+            card.style.animation = `fadeInUp 0.8s ease-out ${index * 0.1}s both`;
+        });
+
+        // Add hover animations to filter buttons
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px) scale(1.05)';
+            });
+
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Header background change on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(220, 38, 38, 0.98)';
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.3)';
+            } else {
+                header.style.background = 'rgba(220, 38, 38, 0.95)';
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Add bounce animation keyframes
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes bounceIn {
+                0% {
+                    opacity: 0;
+                    transform: scale(0.3);
+                }
+                50% {
+                    opacity: 1;
+                    transform: scale(1.05);
+                }
+                70% {
+                    transform: scale(0.9);
+                }
+                100% {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
