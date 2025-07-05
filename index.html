@@ -742,7 +742,7 @@
             transform: translateY(-3px);
         }
 
-        /* Mobile Menu */
+        /* Mobile Menu - Simplified and Stable */
         .mobile-menu-toggle {
             display: none;
             background: none;
@@ -751,188 +751,338 @@
             font-size: 1.5rem;
             cursor: pointer;
             padding: 0.5rem;
+            z-index: 1001;
         }
 
         .mobile-menu {
             display: none;
             position: fixed;
-            top: 100px;
+            top: 0;
             left: 0;
             right: 0;
-            background: rgba(220, 38, 38, 0.98);
-            backdrop-filter: blur(15px);
-            padding: 2rem;
-            z-index: 999;
+            bottom: 0;
+            background: rgba(220, 38, 38, 0.95);
+            z-index: 1000;
+            padding-top: 100px;
+            overflow-y: auto;
         }
 
         .mobile-menu.active {
             display: block;
-            animation: slideDown 0.3s ease-out;
+        }
+
+        .mobile-menu-content {
+            padding: 2rem;
+            max-width: 400px;
+            margin: 0 auto;
         }
 
         .mobile-menu a {
             display: block;
             color: white;
             text-decoration: none;
-            padding: 1rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1.2rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             font-weight: 500;
-            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            text-align: center;
         }
 
-        .mobile-menu a:hover {
+        .mobile-menu a:hover,
+        .mobile-menu a.active {
             color: #fecaca;
-            padding-left: 1rem;
+            background: rgba(255, 255, 255, 0.1);
         }
 
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        /* Mobile-First Responsive Design */
+
+        /* Base Mobile Styles (320px+) */
+        .container {
+            max-width: 100%;
+            padding: 0 1rem;
         }
 
-        /* Responsive Design */
-        @media (max-width: 1024px) {
+        .header {
+            padding: 0.8rem 1rem;
+        }
+
+        .nav {
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+        }
+
+        .logo i {
+            font-size: 1.7rem;
+        }
+
+        .nav-links {
+            display: none;
+        }
+
+        .mobile-menu-toggle {
+            display: block;
+        }
+
+        .hero {
+            height: auto;
+            min-height: 100vh;
+            padding: 6rem 1rem 4rem;
+            background-attachment: scroll;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
+
+        .cta-buttons {
+            flex-direction: column;
+            gap: 1rem;
+            align-items: stretch;
+        }
+
+        .cta-button {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            width: 100%;
+            max-width: 280px;
+            margin: 0 auto;
+        }
+
+        .floating-element {
+            display: none;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .product-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .product-card {
+            max-width: 100%;
+        }
+
+        .product-content {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            font-size: 1.3rem;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+        }
+
+        .features-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .feature-card {
+            padding: 1.5rem;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+        }
+
+        .testimonials-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .testimonial-card {
+            padding: 1.5rem;
+        }
+
+        .achievements-grid {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .achievement-card {
+            padding: 1.5rem;
+        }
+
+        .achievement-icon {
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+        }
+
+        .newsletter-form {
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .newsletter-form input {
+            min-width: 100%;
+        }
+
+        .footer-links {
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .products,
+        .features,
+        .testimonials,
+        .achievements,
+        .newsletter {
+            padding: 3rem 1rem;
+        }
+
+        /* Small Mobile (480px+) */
+        @media (min-width: 480px) {
             .container {
-                max-width: 95%;
+                padding: 0 1.5rem;
             }
 
             .hero h1 {
-                font-size: 3.5rem;
-            }
-
-            .product-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .mobile-menu-toggle {
-                display: block;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .hero {
-                padding: 2rem 1rem;
-                min-height: 80vh;
-            }
-
-            .hero h1 {
-                font-size: 2.8rem;
-                margin-bottom: 1rem;
+                font-size: 2.5rem;
             }
 
             .hero p {
                 font-size: 1.1rem;
-                margin-bottom: 2rem;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                gap: 1rem;
-                align-items: stretch;
-            }
-
-            .cta-button {
-                width: 100%;
-                max-width: 300px;
-                margin: 0 auto;
-            }
-
-            .product-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .achievements-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-            }
-
-            .newsletter-form {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .newsletter-form input {
-                min-width: 100%;
-            }
-
-            .footer-links {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .section-title {
-                font-size: 2.5rem;
-            }
-
-            .page-title {
-                font-size: 2.8rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .header {
-                padding: 1rem;
-            }
-
-            .hero {
-                padding: 1rem;
-                min-height: 70vh;
-            }
-
-            .hero h1 {
-                font-size: 2.2rem;
-                line-height: 1.2;
-            }
-
-            .hero p {
-                font-size: 1rem;
-                margin-bottom: 1.5rem;
             }
 
             .section-title {
                 font-size: 2rem;
             }
 
-            .page-title {
-                font-size: 2.2rem;
-            }
-
-            .product-grid {
-                grid-template-columns: 1fr;
+            .achievements-grid {
+                grid-template-columns: repeat(2, 1fr);
                 gap: 1.5rem;
             }
 
+            .cta-button {
+                max-width: 320px;
+            }
+        }
+
+        /* Tablet (768px+) */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 95%;
+                margin: 0 auto;
+                padding: 0 2rem;
+            }
+
+            .header {
+                padding: 1rem 2rem;
+            }
+
+            .logo {
+                font-size: 2rem;
+            }
+
+            .logo i {
+                font-size: 2.2rem;
+            }
+
+            .nav-links {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: none;
+            }
+
+            .hero {
+                padding: 8rem 2rem 6rem;
+                background-attachment: fixed;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+                margin-bottom: 3rem;
+            }
+
+            .cta-buttons {
+                flex-direction: row;
+                justify-content: center;
+                gap: 1.5rem;
+            }
+
+            .cta-button {
+                width: auto;
+                max-width: none;
+            }
+
+            .floating-element {
+                display: block;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .section-subtitle {
+                font-size: 1.2rem;
+                margin-bottom: 3rem;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
             .achievements-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 2rem;
+            }
+
+            .newsletter-form {
+                flex-direction: row;
+                justify-content: center;
                 gap: 1rem;
             }
 
-            .testimonial-card,
-            .achievement-card,
-            .feature-card {
-                padding: 1.5rem;
+            .newsletter-form input {
+                min-width: 300px;
+                flex: none;
+            }
+
+            .footer-links {
+                flex-direction: row;
+                gap: 2rem;
             }
 
             .products,
@@ -940,26 +1090,46 @@
             .testimonials,
             .achievements,
             .newsletter {
-                padding: 3rem 1rem;
-            }
-
-            .floating-element {
-                display: none;
+                padding: 5rem 2rem;
             }
         }
 
-        @media (max-width: 320px) {
+        /* Desktop (1024px+) */
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 1200px;
+            }
+
             .hero h1 {
-                font-size: 1.8rem;
+                font-size: 4rem;
+            }
+
+            .hero p {
+                font-size: 1.4rem;
             }
 
             .section-title {
-                font-size: 1.8rem;
+                font-size: 3rem;
             }
 
-            .cta-button {
-                padding: 1rem 1.5rem;
-                font-size: 0.9rem;
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2.5rem;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Large Desktop (1400px+) */
+        @media (min-width: 1400px) {
+            .container {
+                max-width: 1400px;
             }
         }
     </style>
@@ -988,12 +1158,14 @@
 
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
-        <a href="#home" onclick="toggleMobileMenu()">Home</a>
-        <a href="products.html">Products</a>
-        <a href="services.html">Services</a>
-        <a href="#features" onclick="toggleMobileMenu()">Features</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+        <div class="mobile-menu-content">
+            <a href="#home" onclick="toggleMobileMenu()">Home</a>
+            <a href="products.html">Products</a>
+            <a href="services.html">Services</a>
+            <a href="#features" onclick="toggleMobileMenu()">Features</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
     </div>
 
     <!-- Hero Section -->
@@ -1329,36 +1501,30 @@
     </footer>
 
     <script>
-        // Mobile menu functionality
+        // Simple and stable mobile menu
         function toggleMobileMenu() {
             const mobileMenu = document.getElementById('mobileMenu');
             const menuToggle = document.querySelector('.mobile-menu-toggle i');
 
-            mobileMenu.classList.toggle('active');
-
             if (mobileMenu.classList.contains('active')) {
-                menuToggle.classList.remove('fa-bars');
-                menuToggle.classList.add('fa-times');
-            } else {
+                mobileMenu.classList.remove('active');
                 menuToggle.classList.remove('fa-times');
                 menuToggle.classList.add('fa-bars');
+                document.body.style.overflow = '';
+            } else {
+                mobileMenu.classList.add('active');
+                menuToggle.classList.remove('fa-bars');
+                menuToggle.classList.add('fa-times');
+                document.body.style.overflow = 'hidden';
             }
         }
 
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(event) {
-            const mobileMenu = document.getElementById('mobileMenu');
-            const menuToggle = document.querySelector('.mobile-menu-toggle');
-
-            if (!mobileMenu.contains(event.target) && !menuToggle.contains(event.target)) {
-                mobileMenu.classList.remove('active');
-                const menuIcon = document.querySelector('.mobile-menu-toggle i');
-                menuIcon.classList.remove('fa-times');
-                menuIcon.classList.add('fa-bars');
+        // Close mobile menu when clicking on menu background
+        document.getElementById('mobileMenu').addEventListener('click', function(event) {
+            if (event.target === this) {
+                toggleMobileMenu();
             }
         });
-
-        // Enhanced animations and interactions
 
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1386,159 +1552,60 @@
             }
         });
 
-        // Enhanced contact button animations
-        document.querySelectorAll('.contact-button').forEach(button => {
-            button.addEventListener('mouseenter', function() {
-                this.style.transform = 'scale(1.05) translateY(-2px)';
-                this.style.boxShadow = '0 15px 35px rgba(0, 0, 0, 0.4)';
+        // Simple, stable button interactions (desktop only)
+        if (window.innerWidth > 768) {
+            document.querySelectorAll('.contact-button').forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
             });
+        }
 
-            button.addEventListener('mouseleave', function() {
-                this.style.transform = 'scale(1) translateY(0)';
-                this.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.3)';
+        // Simple fade-in animations (desktop only)
+        if (window.innerWidth > 768) {
+            // Simple intersection observer for fade-in effect
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            // Apply to cards with simple fade-in
+            document.querySelectorAll('.product-card, .feature-card, .testimonial-card, .achievement-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
             });
+        }
 
-            button.addEventListener('click', function(e) {
-                // Create ripple effect
-                const rect = this.getBoundingClientRect();
-                const ripple = document.createElement('div');
-                ripple.style.cssText = `
-                    position: absolute;
-                    border-radius: 50%;
-                    background: rgba(255, 255, 255, 0.6);
-                    transform: scale(0);
-                    animation: ripple 0.6s linear;
-                    left: ${e.clientX - rect.left - 10}px;
-                    top: ${e.clientY - rect.top - 10}px;
-                    width: 20px;
-                    height: 20px;
-                    pointer-events: none;
-                `;
+        // Simple hover effects (desktop only)
+        if (window.innerWidth > 768) {
+            document.querySelectorAll('.product-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
 
-                this.style.position = 'relative';
-                this.appendChild(ripple);
-
-                setTimeout(() => {
-                    ripple.remove();
-                }, 600);
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
             });
-        });
+        }
 
-        // Add ripple animation keyframes
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes ripple {
-                to {
-                    transform: scale(4);
-                    opacity: 0;
-                }
-            }
-
-            @keyframes pulse {
-                0%, 100% {
-                    transform: scale(1);
-                }
-                50% {
-                    transform: scale(1.05);
-                }
-            }
-
-            @keyframes slideInFromLeft {
-                0% {
-                    transform: translateX(-100px);
-                    opacity: 0;
-                }
-                100% {
-                    transform: translateX(0);
-                    opacity: 1;
-                }
-            }
-
-            @keyframes slideInFromRight {
-                0% {
-                    transform: translateX(100px);
-                    opacity: 0;
-                }
-                100% {
-                    transform: translateX(0);
-                    opacity: 1;
-                }
-            }
-        `;
-        document.head.appendChild(style);
-
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
-                }
+        // Disable animations on mobile for better performance
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('*').forEach(element => {
+                element.style.animation = 'none';
+                element.style.transition = 'none';
             });
-        }, observerOptions);
-
-        // Observe product cards, feature cards, testimonial cards, and achievement cards
-        document.querySelectorAll('.product-card, .feature-card, .testimonial-card, .achievement-card').forEach((card, index) => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.animationDelay = `${index * 0.1}s`;
-            observer.observe(card);
-        });
-
-        // Add staggered animation to navigation links
-        document.querySelectorAll('.nav-links a').forEach((link, index) => {
-            link.style.animation = `slideInFromLeft 0.8s ease-out ${index * 0.1}s both`;
-        });
-
-        // Add hover animations to section titles
-        document.querySelectorAll('.section-title').forEach(title => {
-            title.addEventListener('mouseenter', function() {
-                this.style.animation = 'pulse 1s ease-in-out';
-            });
-
-            title.addEventListener('animationend', function() {
-                this.style.animation = '';
-            });
-        });
-
-        // Parallax effect for hero section
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero');
-            if (hero) {
-                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-            }
-        });
-
-        // Loading animation
-        window.addEventListener('load', () => {
-            document.body.style.opacity = '0';
-            document.body.style.transition = 'opacity 0.5s ease-in';
-            setTimeout(() => {
-                document.body.style.opacity = '1';
-            }, 100);
-        });
-
-        // Mobile menu toggle (for future enhancement)
-        const mobileMenuToggle = () => {
-            // This can be expanded for mobile menu functionality
-            console.log('Mobile menu toggle');
-        };
-
-        // Add hover effects for product cards
-        document.querySelectorAll('.product-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-15px) scale(1.02)';
-            });
-
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
-        });
+        }
     </script>
 </body>
 </html>
